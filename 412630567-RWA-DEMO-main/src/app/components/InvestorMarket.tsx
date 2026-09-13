@@ -125,7 +125,7 @@ export function InvestorMarket({ onSelectProperty }: InvestorMarketProps) {
                       onClick={() => setSelectedCity(city)}
                       className={`px-5 py-2 rounded-xl text-sm font-black transition-all border ${
                         selectedCity === city 
-                          ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-100 scale-105' 
+                          ? 'bg-blue-600 text-white border-blue-600 shadow-sm' 
                           : 'bg-white text-slate-500 border-slate-100 hover:border-blue-200 hover:text-blue-600'
                       }`}
                     >

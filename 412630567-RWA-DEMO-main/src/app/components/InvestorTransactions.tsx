@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowDownRight, Search, Filter, Calendar, History, Building2, Loader2, Download } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, Search, Filter, Calendar, History, Building2, Loader2, Download, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
@@ -158,7 +158,9 @@ export function InvestorTransactions({ userId }: InvestorTransactionsProps) {
           toastMsg.type === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'
         }`}>
           <span>{toastMsg.text}</span>
-          <button onClick={() => setToastMsg(null)} className="opacity-60 hover:opacity-100">✕</button>
+          <button onClick={() => setToastMsg(null)} className="opacity-60 hover:opacity-100">
+            <X className="w-4 h-4" />
+          </button>
         </div>
       )}
 

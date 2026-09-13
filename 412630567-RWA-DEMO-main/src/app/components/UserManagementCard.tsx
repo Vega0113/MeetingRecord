@@ -522,14 +522,14 @@ export function UserManagementCard() {
                         setIsDecrypting(false);
                       }
                     }}
-                    className={`px-6 py-3 text-white rounded-2xl text-sm font-black shadow-lg transition-all whitespace-nowrap flex items-center gap-2 ${
+                    className={`px-6 py-3 text-white rounded-xl text-xs font-bold shadow-sm transition-all whitespace-nowrap flex items-center gap-2 ${
                       isDecrypting 
                         ? 'bg-slate-700 opacity-80 cursor-wait' 
                         : isDecrypted 
-                        ? 'bg-green-500 shadow-green-500/20' 
+                        ? 'bg-green-600' 
                         : !decryptionKey.trim()
                         ? 'bg-slate-300 cursor-not-allowed shadow-none'
-                        : 'bg-slate-800 hover:bg-slate-700 shadow-slate-800/20 active:scale-95'
+                        : 'bg-slate-800 hover:bg-slate-700 active:scale-95'
                     }`}
                   >
                     {isDecrypting ? (
@@ -739,12 +739,12 @@ export function UserManagementCard() {
                         setIsApproving(false);
                       }
                     }}
-                    className={`px-8 py-3 rounded-2xl text-sm font-black text-white shadow-lg transition-all flex items-center gap-2 ${
+                    className={`px-6 py-3 rounded-xl text-xs font-bold text-white shadow-sm transition-all flex items-center gap-2 ${
                       !isDecrypted || isApproving || isRejecting 
                         ? 'bg-slate-300 cursor-not-allowed shadow-none' 
                         : kycUser.status === 'Whitelisted' 
-                        ? 'bg-red-500 hover:bg-red-600 shadow-red-500/20 active:scale-95' 
-                        : 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/20 active:scale-95'
+                        ? 'bg-red-600 hover:bg-red-700 active:scale-95' 
+                        : 'bg-blue-600 hover:bg-blue-700 active:scale-95'
                     }`}
                   >
                     {isApproving ? (

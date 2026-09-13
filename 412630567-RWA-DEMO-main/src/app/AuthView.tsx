@@ -1,4 +1,4 @@
-import { Shield, LogIn, UserPlus, Upload, CheckCircle, ArrowRight, User, Fingerprint, FileText, Mail, Phone, Loader2, Lock, Eye, EyeOff, RefreshCcw } from "lucide-react";
+import { Shield, LogIn, UserPlus, Upload, CheckCircle, ArrowRight, User, Fingerprint, FileText, Mail, Phone, Loader2, Lock, Eye, EyeOff, RefreshCcw, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { AppMode } from "./App";
 
@@ -206,7 +206,9 @@ export function AuthView({ onLogin }: AuthViewProps) {
             authNotice.type === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'
           }`}>
             <span>{authNotice.text}</span>
-            <button type="button" onClick={() => setAuthNotice(null)} className="opacity-60 hover:opacity-100 font-bold ml-2">✕</button>
+            <button type="button" onClick={() => setAuthNotice(null)} className="opacity-60 hover:opacity-100 ml-2">
+              <X className="w-4 h-4" />
+            </button>
           </div>
         )}
 
@@ -271,7 +273,7 @@ export function AuthView({ onLogin }: AuthViewProps) {
             <div className="flex items-center justify-between px-8 mb-4">
               {[1, 2, 3].map((s) => (
                 <div key={s} className="flex items-center gap-2">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-black transition-colors ${kycStep >= s ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'bg-slate-100 text-slate-300'}`}>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-black transition-colors ${kycStep >= s ? 'bg-blue-600 text-white shadow-sm' : 'bg-slate-100 text-slate-300'}`}>
                     {kycStep > s ? <CheckCircle className="w-6 h-6" /> : s}
                   </div>
                   {s < 3 && <div className={`w-16 h-1 ${kycStep > s ? 'bg-blue-600' : 'bg-slate-100'}`} />}
@@ -285,40 +287,40 @@ export function AuthView({ onLogin }: AuthViewProps) {
                 <div className="grid grid-cols-1 gap-4">
                   <div className="relative">
                     <User className="absolute left-5 top-5 w-5 h-5 text-slate-300" />
-                    <input type="text" placeholder="真實姓名 (作為登入帳號)" value={regName} onChange={e => setRegName(e.target.value)} className="w-full pl-14 pr-6 py-5 bg-slate-50 border border-slate-100 rounded-3xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold" />
+                    <input type="text" placeholder="真實姓名 (作為登入帳號)" value={regName} onChange={e => setRegName(e.target.value)} className="w-full pl-14 pr-6 py-4 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold text-sm" />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="relative">
                       <Mail className="absolute left-5 top-5 w-5 h-5 text-slate-300" />
-                      <input type="email" placeholder="電子郵件" value={regEmail} onChange={e => setRegEmail(e.target.value)} className="w-full pl-14 pr-6 py-5 bg-slate-50 border border-slate-100 rounded-3xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold" />
+                      <input type="email" placeholder="電子郵件" value={regEmail} onChange={e => setRegEmail(e.target.value)} className="w-full pl-14 pr-6 py-4 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold text-sm" />
                     </div>
                     <div className="relative">
                       <Phone className="absolute left-5 top-5 w-5 h-5 text-slate-300" />
-                      <input type="tel" placeholder="手機號碼 (09...)" value={regPhone} onChange={e => setRegPhone(e.target.value)} className="w-full pl-14 pr-6 py-5 bg-slate-50 border border-slate-100 rounded-3xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold" />
+                      <input type="tel" placeholder="手機號碼 (09...)" value={regPhone} onChange={e => setRegPhone(e.target.value)} className="w-full pl-14 pr-6 py-4 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold text-sm" />
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="relative">
                       <Lock className="absolute left-5 top-5 w-5 h-5 text-slate-300" />
-                      <input type="password" placeholder="設定密碼" value={regPassword} onChange={e => setRegPassword(e.target.value)} className="w-full pl-14 pr-6 py-5 bg-slate-50 border border-slate-100 rounded-3xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold" />
+                      <input type="password" placeholder="設定密碼" value={regPassword} onChange={e => setRegPassword(e.target.value)} className="w-full pl-14 pr-6 py-4 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold text-sm" />
                     </div>
                     <div className="relative">
                       <Lock className="absolute left-5 top-5 w-5 h-5 text-slate-300" />
-                      <input type="password" placeholder="確認密碼" value={regConfirmPassword} onChange={e => setRegConfirmPassword(e.target.value)} className="w-full pl-14 pr-6 py-5 bg-slate-50 border border-slate-100 rounded-3xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold" />
+                      <input type="password" placeholder="確認密碼" value={regConfirmPassword} onChange={e => setRegConfirmPassword(e.target.value)} className="w-full pl-14 pr-6 py-4 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600/20 font-bold text-sm" />
                     </div>
                   </div>
                 </div>
                 <div className="space-y-3 mt-4">
                   <button 
                     onClick={handleStep1Next} 
-                    className="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-3xl font-black text-lg shadow-xl shadow-blue-200 uppercase transition-all"
+                    className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-base shadow-sm uppercase transition-all"
                   >
                     下一步: 立即上傳證件 (推薦)
                   </button>
                   <button 
                     onClick={handleQuickRegister} 
                     disabled={isUploading}
-                    className="w-full py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-3xl font-black text-sm uppercase transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold text-xs uppercase transition-all flex items-center justify-center gap-2"
                   >
                     {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
                     直接完成註冊 (稍後於後台補件)
