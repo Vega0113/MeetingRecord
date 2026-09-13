@@ -30,7 +30,7 @@ export function SystemHealthLogModal({
       const response = await apiFetch(`/api/system-alerts`);
       if (response.ok) {
         const data = await response.json();
-        // 🛡️ 關鍵修正：只過濾出與系統健康 (SYSTEM_HEALTH) 相關的真實日誌
+        // 關鍵修正：只過濾出與系統健康 (SYSTEM_HEALTH) 相關的真實日誌
         const mappedLogs = data
           .filter((item: any) => item.alert_type === 'SYSTEM_HEALTH')
           .map((item: any) => ({

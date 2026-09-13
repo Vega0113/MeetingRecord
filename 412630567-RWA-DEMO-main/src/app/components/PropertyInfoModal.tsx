@@ -56,7 +56,7 @@ export function PropertyInfoModal({ isOpen, onClose, property }: PropertyInfoMod
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="bg-white border border-slate-100 rounded-[2.5rem] shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-slate-900/5 animate-in zoom-in-95 duration-200"
+        className="bg-white border border-slate-100 rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-slate-900/5 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -159,7 +159,7 @@ export function PropertyInfoModal({ isOpen, onClose, property }: PropertyInfoMod
           </div>
 
           {/* 外部 591 來源驗證 */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-amber-50/60 border border-amber-200/60 rounded-2xl">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-amber-50/60 border border-amber-200/60 rounded-xl">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-700 shrink-0 font-black text-sm">
                 591
@@ -173,7 +173,7 @@ export function PropertyInfoModal({ isOpen, onClose, property }: PropertyInfoMod
               href={source591Url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-black text-xs shadow-md shadow-amber-200 transition-all flex items-center justify-center gap-1.5 shrink-0 active:scale-95"
+              className="w-full sm:w-auto px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-1.5 shrink-0 active:scale-95"
             >
               開啟 591 原始建案 <ExternalLink className="w-3.5 h-3.5" />
             </a>
@@ -184,7 +184,7 @@ export function PropertyInfoModal({ isOpen, onClose, property }: PropertyInfoMod
         <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end">
           <button
             onClick={onClose}
-            className="px-8 py-3 bg-slate-800 hover:bg-slate-900 text-white rounded-2xl font-black text-sm transition-all shadow-md active:scale-95"
+            className="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-bold text-xs transition-all shadow-sm active:scale-95"
           >
             關閉詳細資訊
           </button>

@@ -80,30 +80,30 @@ export function InvestorPropertyDetail({ userId, property, userProfile, onBack }
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 px-4">
-        <div className="lg:col-span-8 space-y-10">
-          <div className="bg-white border border-border rounded-[3rem] p-10 shadow-sm">
+        <div className="lg:col-span-8 space-y-8">
+          <div className="bg-white border border-border rounded-2xl p-8 shadow-sm">
             <div className="flex items-center gap-4 mb-4">
-              <h2 className="text-4xl sm:text-5xl font-black tracking-tighter text-slate-800">{property.name}</h2>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-800">{property.name}</h2>
               <button
                 onClick={() => setIsInfoOpen(true)}
                 title="查看建案詳細資訊與 591 來源"
-                className="w-10 h-10 rounded-2xl bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm border border-blue-100"
+                className="w-9 h-9 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm border border-blue-100"
               >
-                <Info className="w-5 h-5" />
+                <Info className="w-4 h-4" />
               </button>
             </div>
-            <div className="flex items-center gap-8 mb-10">
-               <div className="flex flex-col"><span className="text-sm text-slate-500 font-bold tracking-wider mb-1">即時現價</span><span className="font-mono text-blue-600 text-5xl tracking-tighter">${Number(livePrice).toFixed(4)}</span></div>
+            <div className="flex items-center gap-8 mb-8">
+               <div className="flex flex-col"><span className="text-sm text-slate-500 font-bold tracking-wider mb-1">即時現價</span><span className="font-mono text-blue-600 text-4xl tracking-tight">${Number(livePrice).toFixed(4)}</span></div>
             </div>
-            <div className="aspect-[21/9] bg-slate-900 border border-slate-800 rounded-[2.5rem] relative flex items-center justify-center p-2 overflow-hidden shadow-inner">
+            <div className="aspect-[21/9] bg-slate-900 border border-slate-800 rounded-xl relative flex items-center justify-center p-2 overflow-hidden shadow-inner">
                <KLineChart currentPrice={livePrice} dataLogs={vLogs} />
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-6">
-             <div className="bg-white border p-8 rounded-[2rem] text-center shadow-sm"><div className="text-sm text-slate-600 font-bold mb-2">當日最高</div><div className="text-3xl text-red-500">${marketStats.high}</div></div>
-             <div className="bg-white border p-8 rounded-[2rem] text-center shadow-sm"><div className="text-sm text-slate-600 font-bold mb-2">當日最低</div><div className="text-3xl text-green-500">${marketStats.low}</div></div>
-             <div className="bg-white border p-8 rounded-[2rem] text-center shadow-sm"><div className="text-sm text-slate-600 font-bold mb-2">總銷估值</div><div className="text-3xl text-slate-800">${((property.price * 100000)/10000).toLocaleString()}萬</div></div>
-             <div className="bg-white border p-8 rounded-[2rem] text-center shadow-sm"><div className="text-sm text-slate-600 font-bold mb-2">市場流通量</div><div className="text-3xl text-blue-500">{liveSupply.toLocaleString()}</div></div>
+          <div className="grid grid-cols-4 gap-4">
+             <div className="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm"><div className="text-xs text-slate-500 font-bold mb-2">當日最高</div><div className="text-2xl text-red-500 font-mono">${marketStats.high}</div></div>
+             <div className="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm"><div className="text-xs text-slate-500 font-bold mb-2">當日最低</div><div className="text-2xl text-green-500 font-mono">${marketStats.low}</div></div>
+             <div className="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm"><div className="text-xs text-slate-500 font-bold mb-2">總銷估值</div><div className="text-2xl text-slate-800 font-mono">${((property.price * 100000)/10000).toLocaleString()}萬</div></div>
+             <div className="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm"><div className="text-xs text-slate-500 font-bold mb-2">市場流通量</div><div className="text-2xl text-blue-600 font-mono">{liveSupply.toLocaleString()}</div></div>
           </div>
         </div>
         <div className="lg:col-span-4 space-y-8">

@@ -52,7 +52,7 @@ export function PropertyOversightCard() {
       if (res.ok) {
         const data = await res.json();
         setFeedbackModal({
-          title: "🎉 租金收益派發成功！",
+          title: "租金收益派發成功",
           desc: `總共派發了 NT$ ${data.total_distributed?.toLocaleString() || rentAmount.toLocaleString()} 元給 ${data.recipients_count || 0} 位持倉投資人！鏈上與信託帳戶已同步清算。`,
           type: "success"
         });
@@ -124,7 +124,7 @@ export function PropertyOversightCard() {
   }, [data]);
 
   return (
-    <div className="bg-card border border-border rounded-[2rem] shadow-xl overflow-hidden flex flex-col transition-all duration-500 ring-1 ring-slate-100 text-slate-800">
+    <div className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all duration-500 ring-1 ring-slate-100 text-slate-800">
       <div className="p-6 border-b border-border bg-purple-500/5 flex items-center justify-between">
         <h3 className="font-black flex items-center gap-3 text-purple-700 dark:text-purple-400 text-lg uppercase tracking-tight">
           <Building2 className="w-6 h-6" />
@@ -151,10 +151,7 @@ export function PropertyOversightCard() {
                 </div>
               </div>
 
-              <div className="p-6 bg-slate-900 rounded-[2rem] border border-slate-800 shadow-2xl relative overflow-hidden">
-                 <div className="absolute top-0 right-0 p-4 opacity-10">
-                    <Landmark className="w-20 h-20 text-white" />
-                 </div>
+              <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 shadow-sm relative overflow-hidden">
                  <h4 className="text-[10px] font-black text-slate-400 uppercase mb-3 flex items-center gap-2 tracking-[0.2em]">
                    <TrendingUp className="w-4 h-4 text-green-400" /> 銀行信託帳戶狀態
                  </h4>
@@ -170,7 +167,7 @@ export function PropertyOversightCard() {
                  </div>
               </div>
               
-              <div className="p-5 bg-purple-50 rounded-2xl border border-purple-100">
+              <div className="p-5 bg-purple-50 rounded-xl border border-purple-100">
                  <p className="text-xs font-bold text-purple-800 tracking-wide">
                     資產代幣：{mainProperty.token_symbol} ｜ 收益週期：{mainProperty.payout_cycle_days || 30} 天 (定期月結)
                  </p>
@@ -179,7 +176,7 @@ export function PropertyOversightCard() {
 
             {/* Right: Actions & Distribution */}
             <div className="space-y-8 flex flex-col justify-center">
-              <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 space-y-5 shadow-sm">
+              <div className="bg-slate-50 p-8 rounded-xl border border-slate-100 space-y-5 shadow-sm">
                   <div className="flex items-center gap-2 mb-1 text-slate-800">
                      <Clock className="w-5 h-5 text-purple-600" />
                      <span className="text-sm font-black text-slate-800 uppercase tracking-tight">設定收益發放週期</span>
@@ -190,14 +187,14 @@ export function PropertyOversightCard() {
                         type="number" 
                         value={payoutPeriod}
                         onChange={(e) => setPayoutPeriod(e.target.value)}
-                        className="w-full pl-6 pr-12 py-4 bg-white border border-slate-200 rounded-2xl outline-none focus:ring-4 focus:ring-purple-600/10 font-black text-lg transition-all" 
+                        className="w-full pl-6 pr-12 py-4 bg-white border border-slate-200 rounded-xl outline-none focus:ring-4 focus:ring-purple-600/10 font-black text-lg transition-all" 
                       />
                       <span className="absolute right-4 top-4.5 text-xs font-bold text-slate-400">天</span>
                     </div>
                     <button 
                       onClick={handleUpdatePeriod}
                       disabled={isUpdatingPeriod}
-                      className="px-8 bg-slate-800 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-900 transition-all flex items-center gap-2 shadow-lg disabled:opacity-50"
+                      className="px-8 bg-slate-800 text-white rounded-xl font-black text-xs uppercase tracking-widest hover:bg-slate-900 transition-all flex items-center gap-2 shadow-sm disabled:opacity-50"
                     >
                       {isUpdatingPeriod ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
                       確認
@@ -205,18 +202,18 @@ export function PropertyOversightCard() {
                   </div>
               </div>
 
-              <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-2xl space-y-6 ring-1 ring-slate-100/50">
+              <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-purple-600 flex items-center justify-center text-white shadow-xl shadow-purple-200">
+                  <div className="w-12 h-12 rounded-xl bg-purple-600 flex items-center justify-center text-white shadow-sm">
                     <Send className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-black text-xl text-slate-800 uppercase tracking-tighter">租金收益撥付</h4>
+                    <h4 className="font-black text-xl text-slate-800 uppercase tracking-tight">租金收益撥付</h4>
                     <p className="text-[10px] font-bold text-slate-400 tracking-wider">定期信託收益派發</p>
                   </div>
                 </div>
 
-                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                <div className="p-6 bg-slate-50 rounded-xl border border-slate-100">
                    <div className="flex justify-between items-center mb-1">
                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">預計總發放額度</span>
                       <span className="text-xs font-bold text-slate-400">合規核驗</span>
@@ -227,9 +224,9 @@ export function PropertyOversightCard() {
                 <button 
                   onClick={handleSendRent}
                   disabled={isSending || mainProperty.pending_rent_amount <= 0}
-                  className="w-full py-6 bg-purple-600 hover:bg-purple-700 text-white rounded-3xl font-black text-xl flex items-center justify-center gap-3 shadow-2xl shadow-purple-200 transition-all active:scale-95 disabled:opacity-30 uppercase tracking-widest"
+                  className="w-full py-5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-black text-lg flex items-center justify-center gap-3 shadow-sm transition-all active:scale-95 disabled:opacity-30 uppercase tracking-wider"
                 >
-                  {isSending ? <Loader2 className="w-7 h-7 animate-spin" /> : <Landmark className="w-6 h-6" />}
+                  {isSending ? <Loader2 className="w-6 h-6 animate-spin" /> : <Landmark className="w-5 h-5" />}
                   {isSending ? "正在執行撥付..." : "執行收益發放"}
                 </button>
               </div>
@@ -251,12 +248,12 @@ export function PropertyOversightCard() {
       {/* 專屬操作回饋彈窗 */}
       {feedbackModal && (
         <div className="fixed inset-0 bg-black/60 z-[200] flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-white rounded-[2.5rem] p-8 max-w-sm w-full shadow-2xl animate-in zoom-in-95 text-center space-y-6">
-            <div className={`w-16 h-16 rounded-3xl mx-auto flex items-center justify-center text-white shadow-xl ${
-              feedbackModal.type === 'success' ? 'bg-purple-600 shadow-purple-200' :
-              feedbackModal.type === 'warning' ? 'bg-amber-500 shadow-amber-200' : 'bg-red-500 shadow-red-200'
+          <div className="bg-white rounded-2xl p-8 max-w-sm w-full shadow-lg border border-slate-100 animate-in zoom-in-95 text-center space-y-6">
+            <div className={`w-14 h-14 rounded-xl mx-auto flex items-center justify-center text-white shadow-sm ${
+              feedbackModal.type === 'success' ? 'bg-purple-600' :
+              feedbackModal.type === 'warning' ? 'bg-amber-500' : 'bg-red-500'
             }`}>
-              {feedbackModal.type === 'success' ? <CheckCircle2 className="w-8 h-8" /> : <Building2 className="w-8 h-8" />}
+              {feedbackModal.type === 'success' ? <CheckCircle2 className="w-7 h-7" /> : <Building2 className="w-7 h-7" />}
             </div>
             <div className="space-y-2">
               <h4 className="text-xl font-black text-slate-800">{feedbackModal.title}</h4>
@@ -264,7 +261,7 @@ export function PropertyOversightCard() {
             </div>
             <button
               onClick={() => setFeedbackModal(null)}
-              className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-black text-xs uppercase tracking-wider transition-all"
+              className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-black text-xs uppercase tracking-wider transition-all"
             >
               我知道了
             </button>

@@ -39,19 +39,19 @@ export function BlockchainDeployCard({ onLog }: BlockchainDeployCardProps) {
   const handleDeploy = async () => {
     setIsDeploying(true);
     setError(null);
-    onLog?.("info", "🚀 已送出區塊鏈基礎設施部署請求，開始開通流程...");
+    onLog?.("info", "已送出區塊鏈基礎設施部署請求，開始開通流程...");
     try {
       const res = await apiFetch("/api/blockchain/setup", { method: "POST" });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || "部署失敗");
       onLog?.(
         "success",
-        `🎉 部署完成：${data.propertyTokens?.length ?? 0} 個代幣、${data.registeredUsers?.length ?? 0} 位用戶已登記`,
+        `部署完成：${data.propertyTokens?.length ?? 0} 個代幣、${data.registeredUsers?.length ?? 0} 位用戶已登記`,
       );
       await fetchStatus();
     } catch (e: any) {
       setError(e.message || "部署失敗");
-      onLog?.("error", `❌ 區塊鏈部署失敗: ${e.message}`);
+      onLog?.("error", `區塊鏈部署失敗: ${e.message}`);
     } finally {
       setIsDeploying(false);
     }
@@ -61,7 +61,7 @@ export function BlockchainDeployCard({ onLog }: BlockchainDeployCardProps) {
   const nodeReachable = status?.nodeReachable ?? false;
 
   return (
-    <div className="bg-white border border-border rounded-[2rem] shadow-sm overflow-hidden flex flex-col justify-between ring-1 ring-slate-100">
+    <div className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between ring-1 ring-slate-100">
       <div className="p-6 border-b border-border bg-slate-50/50 flex items-center justify-between">
         <h3 className="font-black flex items-center gap-2.5 text-base text-slate-800">
           <Link2 className="w-5 h-5 text-indigo-600" />

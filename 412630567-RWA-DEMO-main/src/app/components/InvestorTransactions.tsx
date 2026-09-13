@@ -56,7 +56,7 @@ export function InvestorTransactions({ userId }: InvestorTransactionsProps) {
     try {
       const res = await apiFetch(`/api/pending-orders/${orderId}/cancel`, { method: 'POST' });
       if (res.ok) {
-        setToastMsg({ text: "🎉 已成功取消該筆委託掛單！款項與代幣已退回錢包。", type: 'success' });
+        setToastMsg({ text: "已成功取消該筆委託掛單！款項與代幣已退回錢包。", type: 'success' });
         setPendingOrders(pendingOrders.filter(o => o.id !== orderId));
         setTimeout(() => setToastMsg(null), 3500);
       } else {
@@ -139,7 +139,7 @@ export function InvestorTransactions({ userId }: InvestorTransactionsProps) {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      setToastMsg({ text: `🎉 已成功匯出並下載交易稽核報表（共 ${list.length} 筆紀錄）！`, type: "success" });
+      setToastMsg({ text: `已成功匯出並下載交易稽核報表（共 ${list.length} 筆紀錄）`, type: "success" });
       setTimeout(() => setToastMsg(null), 3500);
     } catch (e: any) {
       setToastMsg({ text: e.message || "匯出 CSV 失敗，請稍後重試", type: "error" });
@@ -154,7 +154,7 @@ export function InvestorTransactions({ userId }: InvestorTransactionsProps) {
       
       {/* Toast Notification Banner */}
       {toastMsg && (
-        <div className={`p-4 rounded-2xl flex items-center justify-between text-xs font-black shadow-lg border animate-in slide-in-from-top-2 ${
+        <div className={`p-4 rounded-xl flex items-center justify-between text-xs font-black shadow-sm border animate-in slide-in-from-top-2 ${
           toastMsg.type === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'
         }`}>
           <span>{toastMsg.text}</span>
@@ -163,27 +163,27 @@ export function InvestorTransactions({ userId }: InvestorTransactionsProps) {
       )}
 
       {/* Filter Bar */}
-      <div className="bg-white border border-border p-8 rounded-[3rem] shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-white border border-border p-8 rounded-2xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-           <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+           <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-sm">
               <History className="w-6 h-6" />
            </div>
             <div>
-               <h2 className="text-3xl font-black text-slate-800 tracking-tighter uppercase font-sans">交易紀錄</h2>
+               <h2 className="text-2xl font-black text-slate-800 tracking-tight uppercase font-sans">交易紀錄</h2>
                <p className="text-xs font-bold text-slate-500 mt-1">用戶即時交易與撮合審計紀錄 ｜ 帳號 UID: {userId}</p>
             </div>
          </div>
 
-         <div className="flex bg-slate-100 p-2 rounded-[2rem] gap-1 font-sans">
+         <div className="flex bg-slate-100 p-1.5 rounded-xl gap-1 font-sans">
           <button 
             onClick={() => setViewMode("PENDING")}
-            className={`px-8 py-3 rounded-2xl text-xs font-black transition-all uppercase tracking-widest ${viewMode === "PENDING" ? 'bg-white shadow-lg text-blue-600 scale-105' : 'text-slate-400 hover:text-slate-600'}`}
+            className={`px-6 py-2.5 rounded-lg text-xs font-black transition-all uppercase tracking-wider ${viewMode === "PENDING" ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
           >
             當前掛單
           </button>
           <button 
             onClick={() => setViewMode("HISTORY")}
-            className={`px-8 py-3 rounded-2xl text-xs font-black transition-all uppercase tracking-widest ${viewMode === "HISTORY" ? 'bg-white shadow-lg text-blue-600 scale-105' : 'text-slate-400 hover:text-slate-600'}`}
+            className={`px-6 py-2.5 rounded-lg text-xs font-black transition-all uppercase tracking-wider ${viewMode === "HISTORY" ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
           >
             歷史紀錄
           </button>
@@ -191,7 +191,7 @@ export function InvestorTransactions({ userId }: InvestorTransactionsProps) {
       </div>
 
       {/* Transaction Table */}
-      <div className="bg-white border border-border rounded-[3rem] shadow-sm overflow-hidden ring-1 ring-slate-100 font-sans">
+      <div className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden ring-1 ring-slate-100 font-sans">
         <table className="w-full text-left">
           <thead className="bg-slate-50 border-b border-border">
             <tr>

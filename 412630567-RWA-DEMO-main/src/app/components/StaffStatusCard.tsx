@@ -24,14 +24,14 @@ export function StaffStatusCard({ onOpenChat, hasRequest = false, isBankerView =
   };
 
   return (
-    <div className={`bg-white border ${hasRequest ? (requestType === 'PAUSE_REQUEST' ? 'border-red-500' : 'border-yellow-500') : 'border-border'} rounded-[2rem] shadow-sm overflow-hidden flex flex-col justify-between ring-1 ring-slate-100 transition-all duration-300 h-full`}>
+    <div className={`bg-white border ${hasRequest ? (requestType === 'PAUSE_REQUEST' ? 'border-red-500' : 'border-yellow-500') : 'border-border'} rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between ring-1 ring-slate-100 transition-all duration-300 h-full`}>
       <div className={`p-6 border-b border-border ${hasRequest ? (requestType === 'PAUSE_REQUEST' ? 'bg-red-500/10' : 'bg-yellow-500/10') : 'bg-slate-50/50'} flex items-center justify-between`}>
         <h3 className="font-black flex items-center gap-2 text-base text-slate-800">
           {isBankerView ? <ShieldCheck className="w-5 h-5 text-purple-600" /> : <Cpu className="w-5 h-5 text-blue-600" />}
           {isBankerView ? '業務端值班人員' : '技術端負責人'}
         </h3>
         <span className={`flex items-center gap-1.5 text-xs font-bold ${hasRequest ? (requestType === 'PAUSE_REQUEST' ? 'text-red-500' : 'text-yellow-600') : 'text-green-500'} uppercase`}>
-          <span className={`w-2 h-2 rounded-full ${hasRequest ? (requestType === 'PAUSE_REQUEST' ? 'bg-red-500 animate-pulse' : 'bg-yellow-500 animate-bounce') : 'bg-green-500'}`} />
+          <span className={`w-2 h-2 rounded-full ${hasRequest ? (requestType === 'PAUSE_REQUEST' ? 'bg-red-500 animate-pulse' : 'bg-yellow-500') : 'bg-green-500'}`} />
           {hasRequest ? '請求處理中' : '連線正常'}
         </span>
       </div>
@@ -42,7 +42,7 @@ export function StaffStatusCard({ onOpenChat, hasRequest = false, isBankerView =
             <User className={`w-10 h-10 ${isBankerView ? 'text-purple-600' : 'text-blue-600'}`} />
           </div>
           {hasRequest && !isBankerView && (
-            <div className={`absolute -top-1 -right-1 ${requestType === 'PAUSE_REQUEST' ? 'bg-red-600' : 'bg-yellow-500'} text-white p-1.5 rounded-full animate-bounce shadow-md`}>
+            <div className={`absolute -top-1 -right-1 ${requestType === 'PAUSE_REQUEST' ? 'bg-red-600' : 'bg-yellow-500'} text-white p-1.5 rounded-full shadow-sm`}>
               <AlertTriangle className="w-3.5 h-3.5" />
             </div>
           )}
@@ -65,7 +65,7 @@ export function StaffStatusCard({ onOpenChat, hasRequest = false, isBankerView =
           <div className="relative">
             <button 
               onClick={onOpenChat}
-              className={`w-full py-4 ${getButtonColor()} rounded-2xl font-black text-sm flex items-center justify-center gap-2 transition-all shadow-lg active:scale-95 text-white`}
+              className={`w-full py-3.5 ${getButtonColor()} rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95 text-white`}
             >
               <MessageSquare className="w-4 h-4" />
               處理訊息

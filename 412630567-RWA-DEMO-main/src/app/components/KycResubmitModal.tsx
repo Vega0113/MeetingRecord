@@ -138,11 +138,11 @@ export function KycResubmitModal({
         onClick={handleClose} 
       />
 
-      <div className="relative z-10 bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden animate-in zoom-in-95 duration-300">
+      <div className="relative z-10 bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-slate-100 overflow-hidden animate-in zoom-in-95 duration-300">
         {/* Modal 頂部 Header */}
         <div className="px-8 py-6 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-200">
+            <div className="p-3 bg-blue-600 text-white rounded-xl shadow-sm">
               {isSuccess ? <CheckCircle className="w-5 h-5" /> : <Upload className="w-5 h-5" />}
             </div>
             <div>
@@ -166,11 +166,11 @@ export function KycResubmitModal({
 
         {isSuccess ? (
           <div className="p-12 flex flex-col items-center justify-center text-center space-y-6 animate-in zoom-in-95 duration-300">
-            <div className="w-20 h-20 bg-green-500 text-white rounded-3xl flex items-center justify-center shadow-2xl shadow-green-200 animate-bounce">
-              <CheckCircle className="w-10 h-10" />
+            <div className="w-16 h-16 bg-green-500 text-white rounded-xl flex items-center justify-center shadow-sm">
+              <CheckCircle className="w-8 h-8" />
             </div>
             <div className="space-y-2">
-              <h3 className="text-2xl font-black text-slate-800">🎉 證件補繳提交成功！</h3>
+              <h3 className="text-2xl font-black text-slate-800">證件補繳提交成功</h3>
               <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-sm mx-auto">
                 您的雙證件已安全加密上傳至雲端伺服器，銀行合規人員將於營業時間盡速為您重新審核。
               </p>
@@ -178,7 +178,7 @@ export function KycResubmitModal({
             <button
               type="button"
               onClick={handleClose}
-              className="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-black text-xs shadow-lg shadow-slate-200 hover:scale-[1.02] active:scale-95 transition-all"
+              className="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-xs shadow-sm active:scale-95 transition-all"
             >
               完成並關閉
             </button>
@@ -187,7 +187,7 @@ export function KycResubmitModal({
           <form onSubmit={handleSubmit} className="p-8 space-y-6">
             {/* 退件原因提示框 */}
             {currentStatus === "REJECTED" && rejectionReason && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded-2xl flex items-start gap-3 animate-in slide-in-from-top-2">
+              <div className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3 animate-in slide-in-from-top-2">
                 <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-sm font-black text-red-800">行員退件審核備註：</h4>
@@ -198,7 +198,7 @@ export function KycResubmitModal({
             )}
 
             {errorMsg && (
-              <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-2xl text-xs font-bold flex items-center gap-2 animate-in slide-in-from-top-1">
+              <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-bold flex items-center gap-2 animate-in slide-in-from-top-1">
                 <AlertTriangle className="w-4 h-4 shrink-0" />
                 <span>{errorMsg}</span>
               </div>
@@ -212,7 +212,7 @@ export function KycResubmitModal({
                   <span className="w-2 h-2 rounded-full bg-blue-600"></span>
                   身分證正面 (Front)
                 </label>
-                <label className="relative aspect-[1.5/1] bg-slate-50 border-2 border-dashed border-slate-200 hover:border-blue-500 rounded-3xl flex flex-col items-center justify-center p-4 group cursor-pointer transition-all overflow-hidden">
+                <label className="relative aspect-[1.5/1] bg-slate-50 border-2 border-dashed border-slate-200 hover:border-blue-500 rounded-xl flex flex-col items-center justify-center p-4 group cursor-pointer transition-all overflow-hidden">
                   <input
                     type="file"
                     accept="image/jpeg,image/png,image/jpg"
@@ -221,15 +221,15 @@ export function KycResubmitModal({
                   />
                   {previewFront ? (
                     <div className="relative w-full h-full">
-                      <img src={previewFront} alt="Front preview" className="w-full h-full object-cover rounded-2xl" />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl flex items-center justify-center text-white text-xs font-black">
+                      <img src={previewFront} alt="Front preview" className="w-full h-full object-cover rounded-lg" />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center text-white text-xs font-black">
                         點擊更換照片
                       </div>
                     </div>
                   ) : (
                     <div className="text-center space-y-2">
-                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mx-auto group-hover:scale-110 transition-transform">
-                        <FileText className="w-6 h-6 text-blue-500" />
+                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:scale-110 transition-transform">
+                        <FileText className="w-5 h-5 text-blue-500" />
                       </div>
                       <p className="text-sm font-bold text-slate-800">上傳身分證正面</p>
                       <p className="text-xs text-slate-500 font-medium">支援 JPG、PNG 格式 (最大 5MB)</p>
@@ -244,7 +244,7 @@ export function KycResubmitModal({
                   <span className="w-2 h-2 rounded-full bg-blue-600"></span>
                   身分證反面
                 </label>
-                <label className="relative aspect-[1.5/1] bg-slate-50 border-2 border-dashed border-slate-200 hover:border-blue-500 rounded-3xl flex flex-col items-center justify-center p-4 group cursor-pointer transition-all overflow-hidden">
+                <label className="relative aspect-[1.5/1] bg-slate-50 border-2 border-dashed border-slate-200 hover:border-blue-500 rounded-xl flex flex-col items-center justify-center p-4 group cursor-pointer transition-all overflow-hidden">
                   <input
                     type="file"
                     accept="image/jpeg,image/png,image/jpg"
@@ -253,15 +253,15 @@ export function KycResubmitModal({
                   />
                   {previewBack ? (
                     <div className="relative w-full h-full">
-                      <img src={previewBack} alt="Back preview" className="w-full h-full object-cover rounded-2xl" />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl flex items-center justify-center text-white text-xs font-black">
+                      <img src={previewBack} alt="Back preview" className="w-full h-full object-cover rounded-lg" />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center text-white text-xs font-black">
                         點擊更換照片
                       </div>
                     </div>
                   ) : (
                     <div className="text-center space-y-2">
-                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mx-auto group-hover:scale-110 transition-transform">
-                        <FileText className="w-6 h-6 text-blue-500" />
+                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:scale-110 transition-transform">
+                        <FileText className="w-5 h-5 text-blue-500" />
                       </div>
                       <p className="text-sm font-bold text-slate-800">上傳身分證反面</p>
                       <p className="text-xs text-slate-500 font-medium">支援 JPG、PNG 格式 (最大 5MB)</p>
@@ -271,7 +271,7 @@ export function KycResubmitModal({
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3 text-slate-500 text-xs font-medium">
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-3 text-slate-500 text-xs font-medium">
               <ShieldCheck className="w-5 h-5 text-green-500 shrink-0" />
               <span>證件檔案將透過 AES-256 高強度加密儲存於專屬安全節點，僅供合規審查使用。</span>
             </div>
@@ -282,16 +282,16 @@ export function KycResubmitModal({
                 type="button"
                 onClick={handleClose}
                 disabled={isUploading}
-                className="w-1/3 py-4 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-2xl font-black text-sm transition-all disabled:opacity-40"
+                className="w-1/3 py-3 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded-xl font-bold text-xs transition-all disabled:opacity-40"
               >
                 取消
               </button>
               <button
                 type="submit"
                 disabled={isUploading || !fileFront || !fileBack}
-                className="w-2/3 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-black text-sm shadow-xl shadow-blue-200 disabled:opacity-50 transition-all flex items-center justify-center gap-2 active:scale-95"
+                className="w-2/3 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs shadow-sm disabled:opacity-50 transition-all flex items-center justify-center gap-2 active:scale-95"
               >
-                {isUploading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Upload className="w-5 h-5" />}
+                {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
                 {isUploading ? "正在加密上傳中..." : "確認並送交審核"}
               </button>
             </div>

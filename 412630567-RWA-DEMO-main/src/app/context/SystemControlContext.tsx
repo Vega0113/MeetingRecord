@@ -156,10 +156,10 @@ export function SystemControlProvider({ children }: { children: ReactNode }) {
         });
         if (chainRes.ok) {
           const result = await chainRes.json();
-          onLog("info", `⛓️ 鏈上合約同步：${result.affected}/${result.total} 個代幣已${nextIsPaused ? '暫停' : '恢復'}`);
+          onLog("info", `鏈上合約同步：${result.affected}/${result.total} 個代幣已${nextIsPaused ? '暫停' : '恢復'}`);
         }
       } catch (chainErr) {
-        onLog("warning", "⚠️ 鏈上合約狀態同步失敗，僅資料庫層級生效");
+        onLog("warning", "鏈上合約狀態同步失敗，僅資料庫層級生效");
       }
 
       setIsPaused(nextIsPaused);

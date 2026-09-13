@@ -99,12 +99,12 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[200] p-4 backdrop-blur-sm">
-      <div className="bg-white rounded-[2.5rem] border border-slate-200 max-w-md w-full shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+      <div className="bg-white rounded-2xl border border-slate-200 max-w-md w-full shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
         
         {/* Header */}
         <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
           <div className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-slate-800 rounded-2xl flex items-center justify-center text-white shadow-lg">
+             <div className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-white shadow-sm">
                 {step === 1 ? <Settings className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
              </div>
              <div>
@@ -123,7 +123,7 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
             <button 
               onClick={requestNotification}
               disabled={notifPermission === "granted"}
-              className={`w-full p-4 rounded-2xl flex items-center justify-between transition-all ${
+              className={`w-full p-4 rounded-xl flex items-center justify-between transition-all ${
                 notifPermission === "granted" 
                   ? "bg-green-50 border border-green-100 cursor-default" 
                   : "bg-slate-50 hover:bg-slate-100 border border-slate-100 cursor-pointer active:scale-[0.98]"
@@ -148,7 +148,7 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
             {/* 修改密碼入口 */}
             <button 
               onClick={() => { setErrorMsg(""); setStep(2); }}
-              className="w-full p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-100 flex items-center justify-between transition-all cursor-pointer active:scale-[0.98]"
+              className="w-full p-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-100 flex items-center justify-between transition-all cursor-pointer active:scale-[0.98]"
             >
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-white text-slate-600 shadow-sm flex items-center justify-center">
@@ -167,7 +167,7 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
         {step === 2 && (
           <div className="p-8 space-y-6 animate-in slide-in-from-right-4 duration-300">
             {errorMsg && (
-              <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-2xl text-xs font-bold flex items-center gap-3 animate-in fade-in duration-200">
+              <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-bold flex items-center gap-3 animate-in fade-in duration-200">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{errorMsg}</span>
               </div>
@@ -181,7 +181,7 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
                   value={oldPassword}
                   onChange={(e) => setOldPassword(e.target.value)}
                   placeholder="請輸入目前密碼" 
-                  className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-slate-200 mt-1 font-bold" 
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-slate-200 mt-1 font-bold text-sm" 
                 />
               </div>
               <div className="h-px bg-slate-100 my-2" />
@@ -192,7 +192,7 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="請輸入新密碼" 
-                  className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-slate-200 mt-1 font-bold" 
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-slate-200 mt-1 font-bold text-sm" 
                 />
               </div>
               <div>
@@ -202,7 +202,7 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="再次輸入新密碼" 
-                  className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-slate-200 mt-1 font-bold" 
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-slate-200 mt-1 font-bold text-sm" 
                 />
               </div>
             </div>
@@ -210,16 +210,16 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
             <div className="flex gap-3">
               <button 
                 onClick={() => setStep(1)}
-                className="w-1/3 py-5 bg-slate-100 text-slate-600 rounded-[1.5rem] font-black hover:bg-slate-200 transition-all"
+                className="w-1/3 py-3 bg-slate-100 text-slate-600 rounded-xl font-bold text-xs hover:bg-slate-200 transition-all"
               >
                 返回
               </button>
               <button 
                 onClick={handleUpdate}
                 disabled={isUpdating}
-                className="w-2/3 py-5 bg-slate-800 text-white rounded-[1.5rem] font-black shadow-xl shadow-slate-200 hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
+                className="w-2/3 py-3 bg-slate-800 text-white rounded-xl font-bold text-xs shadow-sm hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
               >
-                {isUpdating ? <span className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span> : <Key className="w-5 h-5" />}
+                {isUpdating ? <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span> : <Key className="w-4 h-4" />}
                 更新密碼
               </button>
             </div>
@@ -228,14 +228,14 @@ export function SettingsModal({ isOpen, onClose, userName }: SettingsModalProps)
 
         {step === 3 && (
           <div className="p-12 text-center space-y-6 animate-in fade-in zoom-in duration-500">
-             <div className="w-20 h-20 bg-green-500 rounded-[2rem] flex items-center justify-center text-white mx-auto shadow-xl shadow-green-100">
-                <ShieldCheck className="w-10 h-10" />
+             <div className="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center text-white mx-auto shadow-sm">
+                <ShieldCheck className="w-8 h-8" />
              </div>
              <div>
                 <h4 className="text-2xl font-black text-slate-800">密碼修改成功</h4>
                 <p className="text-sm text-slate-500 mt-2 font-medium">您的新密碼已安全加密儲存，<br/>下次登入請使用新密碼。</p>
              </div>
-             <button onClick={() => { setStep(1); onClose(); }} className="w-full py-4 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-2xl font-black transition-colors">
+             <button onClick={() => { setStep(1); onClose(); }} className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-xs transition-colors">
                 完成並關閉
              </button>
           </div>

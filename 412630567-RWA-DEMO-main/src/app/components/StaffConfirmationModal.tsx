@@ -76,9 +76,10 @@ export function StaffConfirmationModal({
         </div>
 
         <div className="mb-6">
-          <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-md">
-            <p className="text-sm text-yellow-600 dark:text-yellow-400">
-              ⚠ 執行 UNPAUSE 前，請確認以下檢查項目已完成。這是防止 <strong>0206 事件</strong> 重演的關鍵機制。
+          <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-xl flex items-center gap-2">
+            <AlertTriangle className="w-4 h-4 text-yellow-600 shrink-0" />
+            <p className="text-xs text-yellow-700 dark:text-yellow-400">
+              執行 UNPAUSE 前，請確認以下檢查項目已完成。這是防止 <strong>0206 事件</strong> 重演的關鍵機制。
             </p>
           </div>
 
@@ -87,7 +88,7 @@ export function StaffConfirmationModal({
               <div
                 key={item.id}
                 onClick={() => toggleCheck(item.id)}
-                className={`p-3 rounded-md border cursor-pointer transition-all ${
+                className={`p-3 rounded-xl border cursor-pointer transition-all ${
                   item.checked
                     ? "border-green-500 bg-green-500/10"
                     : "border-border bg-muted/30 hover:bg-muted/50"
@@ -111,9 +112,9 @@ export function StaffConfirmationModal({
           </div>
 
           {!allChecked && (
-            <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-md">
-              <p className="text-xs text-red-600 dark:text-red-400">
-                📋 請勾選所有檢查項目後才能執行 UNPAUSE
+            <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+              <p className="text-xs text-red-600 dark:text-red-400 font-bold">
+                請勾選所有檢查項目後才能執行 UNPAUSE
               </p>
             </div>
           )}

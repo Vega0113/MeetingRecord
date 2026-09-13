@@ -95,7 +95,7 @@ export function InvestorMarket({ onSelectProperty }: InvestorMarketProps) {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      <div className="bg-white border border-border p-8 rounded-[3rem] shadow-xl space-y-8 ring-1 ring-slate-100">
+      <div className="bg-white border border-border p-8 rounded-2xl shadow-sm space-y-8 ring-1 ring-slate-100">
         <div className="flex gap-4 items-center">
           <div className="relative flex-1 group">
             <Search className="absolute left-6 top-5.5 w-6 h-6 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
@@ -104,11 +104,11 @@ export function InvestorMarket({ onSelectProperty }: InvestorMarketProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="搜尋房產案名、關鍵字或縣市..." 
-              className="w-full pl-16 pr-6 py-6 bg-slate-50 border-none rounded-3xl focus:ring-4 focus:ring-blue-600/10 outline-none text-xl font-bold text-slate-800 transition-all"
+              className="w-full pl-16 pr-6 py-5 bg-slate-50 border-none rounded-xl focus:ring-4 focus:ring-blue-600/10 outline-none text-xl font-bold text-slate-800 transition-all"
             />
           </div>
-          <button className="px-12 py-6 bg-blue-600 hover:bg-blue-700 text-white rounded-[2rem] font-black text-xl shadow-xl shadow-blue-200 transition-all active:scale-95 flex items-center gap-3">
-            <Search className="w-6 h-6" /> 立即搜尋
+          <button className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black text-lg shadow-sm transition-all active:scale-95 flex items-center gap-3">
+            <Search className="w-5 h-5" /> 立即搜尋
           </button>
         </div>
 
@@ -151,7 +151,7 @@ export function InvestorMarket({ onSelectProperty }: InvestorMarketProps) {
             <div 
               key={prop.id} 
               onClick={() => onSelectProperty(prop)}
-              className="group bg-white border border-border rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer flex flex-col justify-between"
+              className="group bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-blue-200 transition-all cursor-pointer flex flex-col justify-between"
             >
               <div>
                 <div className="relative h-56 overflow-hidden">

@@ -19,9 +19,9 @@ export function TechnicalPage() {
   return (
     <div className="space-y-10 animate-in fade-in duration-500 text-slate-800">
       {activeRequest !== "NONE" && (
-        <div className={`${activeRequest === 'PAUSE_REQUEST' ? 'bg-red-600' : 'bg-blue-600'} text-white p-5 rounded-[2rem] flex items-center justify-between animate-pulse shadow-2xl`}>
-          <div className="flex items-center gap-5 font-black uppercase">🚨 收到業務請求：【{activeRequest === 'PAUSE_REQUEST' ? '暫停' : '恢復'}】</div>
-          <button onClick={openChat} className="bg-white text-slate-900 px-8 py-3 rounded-2xl text-sm font-black hover:bg-gray-100 transition-all shadow-xl uppercase">立即處理</button>
+        <div className={`${activeRequest === 'PAUSE_REQUEST' ? 'bg-red-600' : 'bg-blue-600'} text-white p-5 rounded-xl flex items-center justify-between shadow-sm`}>
+          <div className="flex items-center gap-3 font-bold uppercase tracking-wider text-sm">收到業務請求：【{activeRequest === 'PAUSE_REQUEST' ? '暫停' : '恢復'}】</div>
+          <button onClick={openChat} className="bg-white text-slate-900 px-6 py-2.5 rounded-lg text-xs font-bold hover:bg-slate-100 transition-all shadow-sm uppercase">立即處理</button>
         </div>
       )}
       {/* 上排 3 核心監控卡片 */}

@@ -84,7 +84,7 @@ export function AuthView({ onLogin }: AuthViewProps) {
         setPassword(regPassword);
         setView("LOGIN");
         setKycStep(1);
-        setAuthNotice({ text: "🎉 註冊成功！您現在可以立即登入，並隨時於首頁補繳實名雙證件。", type: "success" });
+        setAuthNotice({ text: "註冊成功！您現在可以立即登入，並隨時於首頁補繳實名雙證件。", type: "success" });
       } else {
         setAuthNotice({ text: "註冊失敗: " + (data.message || "發生未知錯誤"), type: "error" });
       }
@@ -190,15 +190,15 @@ export function AuthView({ onLogin }: AuthViewProps) {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center p-4 font-sans text-slate-900">
-      <div className="bg-white w-full max-w-xl rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 ring-1 ring-slate-100">
+      <div className="bg-white w-full max-w-xl rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-300">
         
         {/* Header */}
-        <div className="p-12 pb-6 text-center border-b border-slate-50 bg-slate-50/50">
-          <div className="w-24 h-24 bg-blue-600 rounded-[2.5rem] flex items-center justify-center shadow-2xl shadow-blue-200 mb-8 mx-auto rotate-3 hover:rotate-0 transition-transform duration-500">
-            <Shield className="w-14 h-14 text-white" />
+        <div className="p-10 pb-6 text-center border-b border-slate-100 bg-slate-50/50">
+          <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center shadow-md mb-6 mx-auto">
+            <Shield className="w-11 h-11 text-white" />
           </div>
-          <h1 className="text-5xl font-black tracking-tighter text-slate-800 uppercase">RWA BANK</h1>
-          <p className="text-slate-500 text-xs font-bold mt-3 text-center">真實世界資產代幣化平台</p>
+          <h1 className="text-4xl font-black tracking-tighter text-slate-800 uppercase">RWA BANK</h1>
+          <p className="text-slate-500 text-xs font-bold mt-2 text-center">真實世界資產代幣化平台</p>
         </div>
 
         {authNotice && (
@@ -244,9 +244,9 @@ export function AuthView({ onLogin }: AuthViewProps) {
               <button 
                 type="submit"
                 disabled={isLoggingIn}
-                className="w-full py-6 bg-slate-800 text-white rounded-3xl font-black text-xl flex items-center justify-center gap-3 hover:opacity-90 active:scale-95 transition-all shadow-xl shadow-slate-200 disabled:opacity-50 uppercase tracking-widest"
+                className="w-full py-5 bg-slate-800 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-slate-900 active:scale-95 transition-all shadow-md disabled:opacity-50 uppercase tracking-wider"
               >
-                {isLoggingIn ? <Loader2 className="w-6 h-6 animate-spin" /> : <LogIn className="w-6 h-6" />}
+                {isLoggingIn ? <Loader2 className="w-5 h-5 animate-spin" /> : <LogIn className="w-5 h-5" />}
                 {isLoggingIn ? "正在連線資料庫..." : "登入系統"}
               </button>
             </div>
@@ -331,7 +331,7 @@ export function AuthView({ onLogin }: AuthViewProps) {
               <div className="space-y-6 animate-in fade-in">
                 <div className="text-center"><h3 className="text-3xl font-black text-slate-800">證件影像上傳</h3><p className="text-xs text-slate-400 mt-2 font-bold">步驟二：實名雙證件核驗</p></div>
                 <div className="grid grid-cols-2 gap-6">
-                  <label className="relative aspect-square bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2.5rem] flex flex-col items-center justify-center p-6 group hover:bg-blue-50 cursor-pointer transition-all overflow-hidden">
+                  <label className="relative aspect-square bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center p-6 group hover:bg-blue-50 cursor-pointer transition-all overflow-hidden">
                     <input 
                       type="file" 
                       accept=".jpg,.jpeg,.png,image/jpeg,image/png" 
@@ -350,12 +350,12 @@ export function AuthView({ onLogin }: AuthViewProps) {
                       <div className="text-center"><CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" /><span className="text-xs font-bold text-slate-700">{kycFileFront.name}</span></div>
                     ) : (
                       <>
-                        <div className="w-16 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform"><FileText className="w-8 h-8 text-blue-500" /></div>
+                        <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm mb-4"><FileText className="w-7 h-7 text-blue-500" /></div>
                         <span className="text-sm font-bold text-slate-800">身分證正面</span><span className="text-xs font-bold text-blue-500 mt-1">JPG / PNG (最大 5MB)</span>
                       </>
                     )}
                   </label>
-                  <label className="relative aspect-square bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2.5rem] flex flex-col items-center justify-center p-6 group hover:bg-blue-50 cursor-pointer transition-all overflow-hidden">
+                  <label className="relative aspect-square bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center p-6 group hover:bg-blue-50 cursor-pointer transition-all overflow-hidden">
                     <input 
                       type="file" 
                       accept=".jpg,.jpeg,.png,image/jpeg,image/png" 
@@ -374,28 +374,28 @@ export function AuthView({ onLogin }: AuthViewProps) {
                       <div className="text-center"><CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" /><span className="text-xs font-bold text-slate-700">{kycFileBack.name}</span></div>
                     ) : (
                       <>
-                        <div className="w-16 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform"><FileText className="w-8 h-8 text-blue-500" /></div>
+                        <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm mb-4"><FileText className="w-7 h-7 text-blue-500" /></div>
                         <span className="text-sm font-bold text-slate-800">身分證背面</span><span className="text-xs font-bold text-blue-500 mt-1">JPG / PNG (最大 5MB)</span>
                       </>
                     )}
                   </label>
                 </div>
                 <div className="space-y-3">
-                  <button onClick={handleKycUpload} disabled={isUploading} className="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-3xl font-black text-lg flex items-center justify-center gap-3 shadow-xl shadow-blue-200 disabled:opacity-50 transition-all">
-                    {isUploading ? <Loader2 className="w-6 h-6 animate-spin" /> : <Upload className="w-5 h-5" />}
+                  <button onClick={handleKycUpload} disabled={isUploading} className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-base flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 transition-all">
+                    {isUploading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Upload className="w-5 h-5" />}
                     {isUploading ? "正在加密上傳..." : "確認並提交審核"}
                   </button>
                   <div className="flex gap-3">
                     <button 
                       onClick={() => setKycStep(1)} 
-                      className="w-1/2 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-2xl font-black text-xs transition-all"
+                      className="w-1/2 py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-xs transition-all"
                     >
                       返回上一步
                     </button>
                     <button 
                       onClick={handleQuickRegister} 
                       disabled={isUploading}
-                      className="w-1/2 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-2xl font-black text-xs transition-all"
+                      className="w-1/2 py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-xs transition-all"
                     >
                       跳過並稍後補件
                     </button>
@@ -405,13 +405,13 @@ export function AuthView({ onLogin }: AuthViewProps) {
             )}
 
             {kycStep === 3 && (
-              <div className="space-y-8 animate-in zoom-in duration-500 text-center py-6">
-                <div className="w-32 h-32 bg-green-500 rounded-[3rem] flex items-center justify-center text-white mx-auto shadow-2xl shadow-green-200 animate-bounce">
-                  <CheckCircle className="w-16 h-16" />
+              <div className="space-y-6 animate-in zoom-in duration-300 text-center py-6">
+                <div className="w-20 h-20 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mx-auto shadow-md">
+                  <CheckCircle className="w-10 h-10" />
                 </div>
-                <h3 className="text-4xl font-black text-slate-800 tracking-tighter">註冊申請已受理</h3>
+                <h3 className="text-3xl font-black text-slate-800 tracking-tighter">註冊申請已受理</h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium">您的 KYC 資料已成功加密寫入審核佇列。<br/>銀行人員核實身分後將開通您的鏈上交易權限。</p>
-                <button onClick={() => { setView("LOGIN"); setKycStep(1); }} className="w-full py-6 bg-slate-800 text-white rounded-3xl font-black text-xl mt-6">前往登入</button>
+                <button onClick={() => { setView("LOGIN"); setKycStep(1); }} className="w-full py-4 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-bold text-lg mt-4 shadow-sm transition-all">前往登入</button>
               </div>
             )}
 

@@ -54,17 +54,17 @@ export function InvestorPortfolio({ userId, userName }: { userId: number, userNa
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-2">
         {/* 總資產淨值 */}
-        <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-8 rounded-[2rem] shadow-xl relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+        <div className="bg-slate-900 text-white p-8 rounded-2xl shadow-sm border border-slate-800 relative overflow-hidden flex flex-col justify-between min-h-[220px]">
           <div className="relative z-10">
-            <div className="text-xs font-bold uppercase tracking-wider opacity-80 mb-2">帳戶總資產淨值</div>
+            <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">帳戶總資產淨值</div>
             <div className="text-4xl font-black tracking-tighter flex items-baseline gap-2">
               ${totalNetWorth.toLocaleString()} 
               <span className="text-sm font-bold opacity-60 font-mono">TWD</span>
             </div>
           </div>
           <div className="relative z-10 mt-6 flex flex-wrap items-center gap-2">
-             <div className="inline-flex items-center gap-2 bg-black/20 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-sm">
-                <PieChart className="w-4 h-4 text-blue-200" />
+             <div className="inline-flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700/50 backdrop-blur-sm">
+                <PieChart className="w-4 h-4 text-blue-400" />
                 <span className="text-xs font-black">現金 ${cashBalance.toLocaleString()} + 代幣 ${holdingsMarketValue.toLocaleString()}</span>
              </div>
              {unrealizedPnL !== 0 && (
@@ -77,11 +77,10 @@ export function InvestorPortfolio({ userId, userName }: { userId: number, userNa
                </div>
              )}
           </div>
-          <PieChart className="absolute -right-6 -bottom-6 w-40 h-48 opacity-10 text-white rotate-12" />
         </div>
 
         {/* 可用現金餘額 */}
-        <div className="bg-white border border-slate-200 p-8 rounded-[2rem] shadow-sm flex flex-col justify-between min-h-[220px]">
+        <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col justify-between min-h-[220px]">
            <div>
               <div className="text-xs font-bold text-slate-400 mb-2 flex items-center justify-between">
                 <span>可用現金餘額</span>
@@ -99,7 +98,7 @@ export function InvestorPortfolio({ userId, userName }: { userId: number, userNa
         </div>
 
         {/* 房產持倉市值 */}
-        <div className="bg-white border border-slate-200 p-8 rounded-[2rem] shadow-sm flex flex-col justify-between min-h-[220px]">
+        <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col justify-between min-h-[220px]">
            <div>
               <div className="text-xs font-bold text-slate-400 mb-2 flex items-center justify-between">
                 <span>房產持倉現值</span>
@@ -116,7 +115,7 @@ export function InvestorPortfolio({ userId, userName }: { userId: number, userNa
            </div>
         </div>
       </div>
-      <div className="bg-white border border-slate-200 rounded-[2rem] shadow-sm overflow-hidden mx-2 text-slate-800">
+      <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden mx-2 text-slate-800">
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <h3 className="font-black text-lg tracking-tight flex items-center gap-2">
             <Building2 className="w-5 h-5 text-blue-600" />

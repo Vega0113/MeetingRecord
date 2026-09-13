@@ -154,9 +154,9 @@ export function UserManagementCard() {
   });
 
   return (
-    <div className="bg-white border border-border rounded-[2.5rem] shadow-sm flex flex-col transition-all duration-500 ring-1 ring-slate-100 relative">
+    <div className="bg-white border border-border rounded-2xl shadow-sm flex flex-col transition-all duration-500 ring-1 ring-slate-100 relative">
       {/* 頂部 Header & 搜尋列 */}
-      <div className="p-8 border-b border-border bg-slate-50 flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-t-[2.5rem]">
+      <div className="p-8 border-b border-border bg-slate-50 flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-t-2xl">
         <div>
           <h3 className="font-black flex items-center gap-3 text-slate-800 text-xl uppercase tracking-tight">
             <Users className="w-8 h-8 text-blue-600" />
@@ -166,7 +166,7 @@ export function UserManagementCard() {
             共 {counts.all} 位用戶
             {counts.pending > 0 && (
               <span className="text-amber-600 font-black ml-2 animate-pulse">
-                • ⚠️ 尚有 {counts.pending} 位待審核 KYC
+                • 尚有 {counts.pending} 位待審核 KYC
               </span>
             )}
           </p>
@@ -258,11 +258,11 @@ export function UserManagementCard() {
             onClick={() => setStatusFilter("VERIFIED")}
             className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 shrink-0 ${
               statusFilter === "VERIFIED"
-                ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                ? "bg-green-600 text-white shadow-sm"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            ✅ 已通過
+            已通過
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${statusFilter === "VERIFIED" ? "bg-green-700 text-white" : "bg-slate-200 text-slate-600"}`}>
               {counts.verified}
             </span>
@@ -273,11 +273,11 @@ export function UserManagementCard() {
             onClick={() => setStatusFilter("REJECTED")}
             className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 shrink-0 ${
               statusFilter === "REJECTED"
-                ? "bg-red-600 text-white shadow-md shadow-red-600/20"
+                ? "bg-red-600 text-white shadow-sm"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            ❌ 已退件
+            已退件
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${statusFilter === "REJECTED" ? "bg-red-700 text-white" : "bg-slate-200 text-slate-600"}`}>
               {counts.rejected}
             </span>
@@ -288,11 +288,11 @@ export function UserManagementCard() {
             onClick={() => setStatusFilter("UNSUBMITTED")}
             className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 shrink-0 ${
               statusFilter === "UNSUBMITTED"
-                ? "bg-slate-600 text-white shadow-md"
+                ? "bg-slate-600 text-white shadow-sm"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
-            ⚪ 未提交
+            未提交
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${statusFilter === "UNSUBMITTED" ? "bg-slate-700 text-white" : "bg-slate-200 text-slate-600"}`}>
               {counts.unsubmitted}
             </span>
@@ -374,10 +374,10 @@ export function UserManagementCard() {
                         ? 'bg-red-50 text-red-700 border-red-200'
                         : 'bg-slate-100 text-slate-600 border-slate-200'
                     }`}>
-                      {user.kycStatus === 'VERIFIED' && '✅ 已通過 KYC'}
-                      {user.kycStatus === 'PENDING' && '⏳ 待審核 KYC'}
-                      {user.kycStatus === 'REJECTED' && '❌ 已退件 (待補件)'}
-                      {user.kycStatus === 'UNSUBMITTED' && '⚪ 未提交 KYC'}
+                      {user.kycStatus === 'VERIFIED' && '已通過 KYC'}
+                      {user.kycStatus === 'PENDING' && '待審核 KYC'}
+                      {user.kycStatus === 'REJECTED' && '已退件 (待補件)'}
+                      {user.kycStatus === 'UNSUBMITTED' && '未提交 KYC'}
                     </span>
 
                     {/* 白名單狀態 Badge */}
@@ -462,10 +462,10 @@ export function UserManagementCard() {
       {kycUser && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={closeKycModal} />
-          <div className="relative w-full max-w-4xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 animate-in zoom-in-95 duration-300">
+          <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100 animate-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 bg-slate-50/50">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-blue-100 text-blue-600 rounded-2xl">
+                <div className="p-3 bg-blue-100 text-blue-600 rounded-xl">
                   {isDecrypted ? <Unlock className="w-6 h-6" /> : <Lock className="w-6 h-6" />}
                 </div>
                 <div>

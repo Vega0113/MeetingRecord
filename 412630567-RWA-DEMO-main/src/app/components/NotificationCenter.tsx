@@ -62,7 +62,7 @@ export function NotificationCenter({ userId }: { userId: number }) {
       {isOpen && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
-          <div className="absolute right-0 mt-4 w-96 bg-white border border-border rounded-[2.5rem] shadow-2xl z-50 overflow-hidden animate-in slide-in-from-top-4 duration-300">
+          <div className="absolute right-0 mt-4 w-96 bg-white border border-border rounded-2xl shadow-lg z-50 overflow-hidden animate-in slide-in-from-top-4 duration-300">
             <div className="p-6 border-b border-border bg-slate-50/50 flex justify-between items-center">
                <div className="flex items-center gap-2">
                   <h3 className="font-black text-sm text-slate-800 tracking-wider">通知中心</h3>

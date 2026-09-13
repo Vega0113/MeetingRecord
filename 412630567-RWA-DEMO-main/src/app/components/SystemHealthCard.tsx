@@ -43,7 +43,7 @@ export function SystemHealthCard() {
 
   return (
     <>
-      <div className="bg-white rounded-[2rem] border border-border p-8 shadow-sm font-sans text-slate-800 ring-1 ring-slate-100 flex flex-col justify-between">
+      <div className="bg-white rounded-2xl border border-border p-8 shadow-sm font-sans text-slate-800 ring-1 ring-slate-100 flex flex-col justify-between">
         <div className="flex items-center justify-between mb-6">
           <h2 className="flex items-center gap-2.5 font-black text-lg text-slate-800">
             <Activity className="w-5 h-5 text-blue-600" />

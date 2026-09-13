@@ -51,7 +51,7 @@ export function OrderBook({ propertyId, currentPrice, onPriceSelect }: OrderBook
   const askRatio = 100 - bidRatio;
 
   return (
-    <div className="bg-white border border-border rounded-[3rem] p-10 shadow-2xl flex flex-col ring-1 ring-slate-100">
+    <div className="bg-white border border-border rounded-2xl p-8 shadow-sm flex flex-col ring-1 ring-slate-100">
       <h3 className="font-black text-2xl mb-2 tracking-tight text-slate-800">
         市場掛單簿
       </h3>

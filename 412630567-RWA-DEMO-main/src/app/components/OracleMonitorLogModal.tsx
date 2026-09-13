@@ -30,7 +30,7 @@ export function OracleMonitorLogModal({
       const response = await apiFetch(`/api/system-alerts`);
       if (response.ok) {
         const data = await response.json();
-        // 🛡️ 關鍵修正：只過濾出與爬蟲 (CRAWLER_REPORT) 相關的日誌
+        // 關鍵修正：只過濾出與爬蟲 (CRAWLER_REPORT) 相關的日誌
         const mappedLogs = data
           .filter((item: any) => item.alert_type === 'CRAWLER_REPORT')
           .map((item: any) => ({

@@ -31,7 +31,7 @@ export const SystemLogsCard = forwardRef<SystemLogsCardHandle>((props, ref) => {
       const response = await apiFetch(`/api/system-alerts`);
       if (response.ok) {
         const data = await response.json();
-        // 🛡️ 關鍵修正：底層稽核日誌根據過濾器狀態進行動態過濾
+        // 關鍵修正：底層稽核日誌根據過濾器狀態進行動態過濾
         const mappedLogs = data
           .filter((item: any) => {
             if (item.alert_type === 'SYSTEM_HEALTH') return filters.system;
