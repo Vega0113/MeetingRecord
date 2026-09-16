@@ -1,4 +1,4 @@
-import { Building2, PieChart as PieChartIcon, DollarSign, Send, TrendingUp, Wallet, Clock, CheckCircle2, Loader2, Landmark, ChevronDown } from "lucide-react";
+import { Building2, PieChart as PieChartIcon, DollarSign, Send, TrendingUp, Wallet, Clock, CheckCircle2, Loader2, Landmark, ChevronDown, ShieldAlert } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
@@ -6,6 +6,7 @@ export function PropertyOversightCard() {
   const { apiFetch } = useAuth();
   const [data, setData] = useState<any[]>([]);
   const [selectedPropertyId, setSelectedPropertyId] = useState<string | number>("");
+  const [paidTodayIds, setPaidTodayIds] = useState<Record<string | number, boolean>>({});
   const [isSending, setIsSending] = useState(false);
   const [payoutPeriod, setPayoutPeriod] = useState("30");
   const [isUpdatingPeriod, setIsUpdatingPeriod] = useState(false);
@@ -75,6 +76,9 @@ export function PropertyOversightCard() {
       });
       if (res.ok) {
         const resultData = await res.json();
+        if (mainProperty.id) {
+          setPaidTodayIds(prev => ({ ...prev, [mainProperty.id]: true }));
+        }
         setFeedbackModal({
           title: "租金收益派發成功",
           desc: `【${mainProperty.title}】總共派發了 NT$ ${(resultData.total_distributed || rentAmount).toLocaleString()} 元給 ${resultData.recipients_count || 0} 位持倉投資人！鏈上與信託帳戶已同步清算。`,
@@ -84,7 +88,26 @@ export function PropertyOversightCard() {
         const refresh = await apiFetch(`/api/oversight`);
         if (refresh.ok) setData(await refresh.json());
       } else {
-        setFeedbackModal({ title: "派發失敗", desc: "無法完成租金派發，請確認後端與區塊鏈連線狀態。", type: "error" });
+        const errData = await res.json().catch(() => ({}));
+        const errMsg = typeof errData?.message === 'string' ? errData.message : '';
+        const isDuplicatePayout = res.status === 500 || res.status === 400 || errMsg.includes('unique') || errMsg.includes('重複') || errMsg.includes('已完成');
+
+        if (isDuplicatePayout) {
+          if (mainProperty.id) {
+            setPaidTodayIds(prev => ({ ...prev, [mainProperty.id]: true }));
+          }
+          setFeedbackModal({
+            title: "收益派發合規提示",
+            desc: `【${mainProperty.title}】今日已完成本期收益派發！為遵循銀行信託專戶防呆合規規範，同一收益週期（今日）不可重複撥付。相關信託清算流水已安全歸檔。`,
+            type: "warning"
+          });
+        } else {
+          setFeedbackModal({
+            title: "派發提示",
+            desc: errMsg || "無法完成租金派發，請稍後重試。",
+            type: "error"
+          });
+        }
       }
     } catch (e) {
       console.error(e);
@@ -270,11 +293,17 @@ export function PropertyOversightCard() {
 
                 <button 
                   onClick={handleSendRent}
-                  disabled={isSending || parseFloat(mainProperty.pending_rent_amount || 0) <= 0}
+                  disabled={isSending || !!paidTodayIds[mainProperty.id] || parseFloat(mainProperty.pending_rent_amount || 0) <= 0}
                   className="w-full py-5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-black text-lg flex items-center justify-center gap-3 shadow-sm transition-all active:scale-95 disabled:opacity-30 uppercase tracking-wider"
                 >
-                  {isSending ? <Loader2 className="w-6 h-6 animate-spin" /> : <Landmark className="w-5 h-5" />}
-                  {isSending ? "正在執行撥付..." : "執行收益發放"}
+                  {isSending ? (
+                    <Loader2 className="w-6 h-6 animate-spin" />
+                  ) : paidTodayIds[mainProperty.id] ? (
+                    <CheckCircle2 className="w-5 h-5 text-emerald-200" />
+                  ) : (
+                    <Landmark className="w-5 h-5" />
+                  )}
+                  {isSending ? "正在執行撥付..." : paidTodayIds[mainProperty.id] ? "今日已完成派發 (合規鎖定)" : "執行收益發放"}
                 </button>
               </div>
             </div>
@@ -300,7 +329,8 @@ export function PropertyOversightCard() {
               feedbackModal.type === 'success' ? 'bg-purple-600' :
               feedbackModal.type === 'warning' ? 'bg-amber-500' : 'bg-red-500'
             }`}>
-              {feedbackModal.type === 'success' ? <CheckCircle2 className="w-7 h-7" /> : <Building2 className="w-7 h-7" />}
+              {feedbackModal.type === 'success' ? <CheckCircle2 className="w-7 h-7" /> :
+               feedbackModal.type === 'warning' ? <ShieldAlert className="w-7 h-7" /> : <Building2 className="w-7 h-7" />}
             </div>
             <div className="space-y-2">
               <h4 className="text-xl font-black text-slate-800">{feedbackModal.title}</h4>
